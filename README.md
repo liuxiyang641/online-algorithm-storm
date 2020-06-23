@@ -4,7 +4,7 @@
 
 JDK: 1.8
 
-Storm: 1.2.0
+Storm: 1.2.2
 
 ## Content
 
