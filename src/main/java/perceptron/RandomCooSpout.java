@@ -26,7 +26,7 @@ public class RandomCooSpout extends BaseRichSpout {
         if (CURRENT_NUM >= NUM_INSTANCES)
             return;
 
-        //three variables (features)
+        // 三个特征值
         double[] coo = new double[4];
         coo[3] = (int) (Math.random() * 2);
         if (coo[3] == 0) {

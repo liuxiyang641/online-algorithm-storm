@@ -39,19 +39,19 @@ public class OnlineLearnBolt extends BaseRichBolt {
                     weights[0], weights[1], weights[2], weights[3]
             }));
         double[] cooWithLabel = (double[]) input.getValueByField("coo");
-        // calculate predicted class
+        // 计算预测结果
         int predictOutput = calculateOutput(theta, weights, cooWithLabel[0], cooWithLabel[1], cooWithLabel[2]);
-        // difference between predicted and actual class values
+        // 预测结果与实际标签之间的差异
         localError = cooWithLabel[3] - predictOutput;
-        // update weights and bias
+        // 更新weight和bias
         weights[0] += LEARNING_RATE * localError * cooWithLabel[0];
         weights[1] += LEARNING_RATE * localError * cooWithLabel[1];
         weights[2] += LEARNING_RATE * localError * cooWithLabel[2];
         weights[3] += LEARNING_RATE * localError;
-        // summation of squared error (error value for all instances)
+        // 计算全局loss
         globalError += (localError * localError);
         instanceNum += 1;
-        /* Root Mean Squared Error */
+        /* 均方误差 */
         System.out.println("Instance " + instanceNum +
                 ": (" + cooWithLabel[0] + ", " + cooWithLabel[1] + ", " + cooWithLabel[2] + ") " +
                 "label: " + (int) cooWithLabel[3] + " predict: " + predictOutput +
