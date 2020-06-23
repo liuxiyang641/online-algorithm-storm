@@ -23,6 +23,8 @@ public class MisraGriesPre {
             FileWriter fileWriter = new FileWriter(pathName);
             String[] candidateChars = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "l", "L", "H"};
             int[] charsNum = new int[]{100, 200, 300, 50, 10, 80, 70, 50, 40, 20, 10, 300, 200};
+//            String[] candidateChars = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "l", "L", "H"};
+//            int[] charsNum = new int[]{10, 20, 30, 5, 1, 8, 7, 5, 4, 2, 1, 25, 20};
             Hashtable<String, AtomicLong> countersMap = new Hashtable<String, AtomicLong>();
             List<String> charsSet = new ArrayList<String>();
             // 记录所有的字符类型和总数量

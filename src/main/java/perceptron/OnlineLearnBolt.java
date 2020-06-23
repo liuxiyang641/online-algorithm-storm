@@ -30,26 +30,25 @@ public class OnlineLearnBolt extends BaseRichBolt {
         weights[3] = 0;// this is the bias
         instanceNum = 0;
         this.collector = collector;
-        collector.emit(new Values((Object) new double[]{
-                0, 0, 0, 0
-        }));
     }
 
     public void execute(Tuple input) {
         // 在线训练10次，进行评估
         if (instanceNum % 10 == 0)
-            collector.emit(new Values((Object) weights));
+            collector.emit(new Values((Object) new double[]{
+                    weights[0], weights[1], weights[2], weights[3]
+            }));
         double[] cooWithLabel = (double[]) input.getValueByField("coo");
         // calculate predicted class
         int predictOutput = calculateOutput(theta, weights, cooWithLabel[0], cooWithLabel[1], cooWithLabel[2]);
         // difference between predicted and actual class values
         localError = cooWithLabel[3] - predictOutput;
-        //update weights and bias
+        // update weights and bias
         weights[0] += LEARNING_RATE * localError * cooWithLabel[0];
         weights[1] += LEARNING_RATE * localError * cooWithLabel[1];
         weights[2] += LEARNING_RATE * localError * cooWithLabel[2];
         weights[3] += LEARNING_RATE * localError;
-        //summation of squared error (error value for all instances)
+        // summation of squared error (error value for all instances)
         globalError += (localError * localError);
         instanceNum += 1;
         /* Root Mean Squared Error */

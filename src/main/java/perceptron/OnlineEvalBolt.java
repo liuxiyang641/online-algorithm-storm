@@ -24,13 +24,13 @@ public class OnlineEvalBolt extends BaseRichBolt {
         for (int j = 0; j < NUM_INSTANCES; j++) {
             labels[j] = (int) (Math.random() * 2);
             if (labels[j] == 0) {
-                x[j] = randomNumber(-5, 4);
-                y[j] = randomNumber(-5, 1);
-                z[j] = randomNumber(-5, 5);
+                x[j] = randomNumber(-1, 3);
+                y[j] = randomNumber(-4, 2);
+                z[j] = randomNumber(-3, 5);
             } else {
-                x[j] = randomNumber(5, 6);
-                y[j] = randomNumber(2, 5);
-                z[j] = randomNumber(3, 5);
+                x[j] = randomNumber(5, 10);
+                y[j] = randomNumber(2, 8);
+                z[j] = randomNumber(2, 9);
             }
         }
     }
@@ -44,7 +44,7 @@ public class OnlineEvalBolt extends BaseRichBolt {
             if (output == labels[j])
                 correctNum += 1;
         }
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("0.0000");
         System.out.println("Eval Accuracy " + evalNo + ": " + df.format(correctNum / NUM_INSTANCES));
         evalNo += 1;
     }

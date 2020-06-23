@@ -6,7 +6,6 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichSpout;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Values;
-import org.apache.storm.utils.Utils;
 
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -16,7 +15,7 @@ import java.util.Map;
  */
 public class RandomCooSpout extends BaseRichSpout {
     private SpoutOutputCollector collector;
-    private int NUM_INSTANCES = 100;
+    private int NUM_INSTANCES = 1000;
     private int CURRENT_NUM = 0;
 
     public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
