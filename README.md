@@ -1,10 +1,9 @@
 # 基于Storm的在线算法
 
-## Requirement
+## Requirements
 
-JDK: 1.8
-
-Storm: 1.2.2
+- JDK: 1.8
+- Storm: 1.2.2
 
 ## Content
 
@@ -27,7 +26,7 @@ Storm: 1.2.2
 
 1. File->open
 2. Import as Maven project
-3. Select pom.xml, right click maven->reimport
+3. Select `pom.xml`, right click `maven->reimport`
 4. Choose one Main java file, click Run
 
 ## Reference
